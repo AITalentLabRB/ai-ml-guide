@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI/ML Recruiter Field Guide — AITalentLab</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f0f0e; --bg2: #161614; --bg3: #1e1e1b; --bg4: #252520;
+  --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.12);
+  --text: #e8e4d8; --muted: #8a8778; --subtle: #5a5850;
+  --accent-a: #b8a9f5; --accent-a2: rgba(184,169,245,0.12);
+  --accent-b: #7ed4b0; --accent-b2: rgba(126,212,176,0.12);
+  --accent-c: #f4a87c; --accent-c2: rgba(244,168,124,0.12);
+  --accent-d: #f4c67c; --accent-d2: rgba(244,198,124,0.12);
+  --accent-e: #7ec8d4; --accent-e2: rgba(126,200,212,0.12);
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --green: #6fcf97; --red: #eb5757; --green2: rgba(111,207,151,0.12); --red2: rgba(235,87,87,0.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.6;display:flex;min-height:100vh}
+#sidebar{width:260px;min-width:260px;background:var(--bg2);border-right:1px solid var(--border);height:100vh;position:sticky;top:0;overflow-y:auto;padding:0 0 40px 0;flex-shrink:0}
+#sidebar::-webkit-scrollbar{width:4px}
+#sidebar::-webkit-scrollbar-thumb{background:var(--subtle);border-radius:2px}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid var(--border)}
+.sidebar-logo{font-family:var(--serif);font-size:17px;color:var(--text);letter-spacing:-0.3px}
+.sidebar-logo span{color:var(--accent-a)}
+.sidebar-sub{font-size:11px;color:var(--muted);margin-top:3px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase}
+.nav-section{padding:16px 0 4px}
+.nav-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--subtle);padding:0 20px 6px}
+.nav-item{display:flex;align-items:center;gap:8px;padding:6px 20px;color:var(--muted);text-decoration:none;font-size:13px;transition:all 0.15s;cursor:pointer;border-left:2px solid transparent}
+.nav-item:hover{color:var(--text);background:var(--bg3)}
+.nav-item.active{color:var(--text);border-left-color:var(--accent-a);background:var(--bg3)}
+.nav-track{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.track-a{background:var(--accent-a)}.track-b{background:var(--accent-b)}.track-c{background:var(--accent-c)}.track-d{background:var(--accent-d)}.track-e{background:var(--accent-e)}.track-disc{background:var(--muted)}
+#main{flex:1;overflow-y:auto;padding:0}
+.page-hero{padding:48px 56px 40px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,var(--bg) 0%,var(--bg2) 100%)}
+.page-hero h1{font-family:var(--serif);font-size:38px;font-weight:400;letter-spacing:-0.5px;line-height:1.2;margin-bottom:8px}
+.page-hero p{color:var(--muted);font-size:15px;max-width:620px;line-height:1.7}
+.hero-meta{display:flex;gap:16px;margin-top:20px;flex-wrap:wrap}
+.hero-tag{font-size:11px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--muted);padding:4px 10px;border:1px solid var(--border2);border-radius:4px}
+.content-section{padding:48px 56px;border-bottom:1px solid var(--border)}
+.content-section:last-child{border-bottom:none}
+.section-label{font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+h2.section-title{font-family:var(--serif);font-size:28px;font-weight:400;letter-spacing:-0.3px;margin-bottom:6px}
+.role-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.role-badge{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;font-weight:400;flex-shrink:0}
+.badge-a{background:var(--accent-a2);color:var(--accent-a)}.badge-b{background:var(--accent-b2);color:var(--accent-b)}.badge-c{background:var(--accent-c2);color:var(--accent-c)}.badge-d{background:var(--accent-d2);color:var(--accent-d)}.badge-e{background:var(--accent-e2);color:var(--accent-e)}
+.role-header-text h2{font-family:var(--serif);font-size:24px;font-weight:400;margin-bottom:2px}
+.role-header-text p{color:var(--muted);font-size:13px}
+.track-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;padding:3px 8px;border-radius:100px;margin-top:6px}
+.pill-a{background:var(--accent-a2);color:var(--accent-a)}.pill-b{background:var(--accent-b2);color:var(--accent-b)}.pill-c{background:var(--accent-c2);color:var(--accent-c)}.pill-d{background:var(--accent-d2);color:var(--accent-d)}.pill-e{background:var(--accent-e2);color:var(--accent-e)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:18px}
+.card-title{font-size:11px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.card p{font-size:13px;color:var(--text);line-height:1.65}
+.card-accent-a{border-left:2px solid var(--accent-a)}.card-accent-b{border-left:2px solid var(--accent-b)}.card-accent-c{border-left:2px solid var(--accent-c)}.card-accent-d{border-left:2px solid var(--accent-d)}.card-accent-e{border-left:2px solid var(--accent-e)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{font-size:11px;font-weight:500;padding:3px 8px;border-radius:4px;border:1px solid}
+.chip-must{background:rgba(184,169,245,0.1);color:var(--accent-a);border-color:rgba(184,169,245,0.25)}
+.chip-strong{background:rgba(126,212,176,0.1);color:var(--accent-b);border-color:rgba(126,212,176,0.25)}
+.chip-nice{background:rgba(244,168,124,0.08);color:var(--accent-c);border-color:rgba(244,168,124,0.2)}
+.chip-not{background:var(--red2);color:var(--red);border-color:rgba(235,87,87,0.2)}
+.signals-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.signal-box{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px}
+.signal-box.green{border-left:3px solid var(--green)}.signal-box.red{border-left:3px solid var(--red)}
+.signal-title{font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:8px}
+.signal-title.green{color:var(--green)}.signal-title.red{color:var(--red)}
+.signal-list{list-style:none;display:flex;flex-direction:column;gap:5px}
+.signal-list li{font-size:12px;color:var(--muted);line-height:1.5;padding-left:12px;position:relative}
+.signal-list li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%}
+.signal-box.green .signal-list li::before{background:var(--green)}.signal-box.red .signal-list li::before{background:var(--red)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:20px}
+th{text-align:left;font-size:10px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--muted);padding:8px 12px;border-bottom:1px solid var(--border);background:var(--bg2)}
+td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top;line-height:1.5}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--bg3)}
+.tbl-container{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:20px}
+.channel-row{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.channel-row:last-child{border-bottom:none}
+.channel-yield{font-size:10px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px}
+.yield-high{background:var(--accent-b2);color:var(--accent-b)}.yield-med{background:var(--accent-d2);color:var(--accent-d)}.yield-low{background:var(--bg3);color:var(--muted)}
+.channel-text{font-size:13px;color:var(--text)}
+.channel-text span{color:var(--muted);font-size:12px}
+.confusion{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:20px}
+.confusion-title{font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--accent-c);margin-bottom:10px}
+.confusion p{font-size:13px;color:var(--muted);line-height:1.65}
+.confusion strong{color:var(--text)}
+.overview-track-header{font-size:11px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;padding:10px 12px 6px;background:var(--bg3);color:var(--muted)}
+.disc-header{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.disc-icon{width:40px;height:40px;border-radius:8px;background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.disc-header-text h2{font-family:var(--serif);font-size:22px;font-weight:400}
+.disc-header-text p{color:var(--muted);font-size:12px;margin-top:2px}
+.section-divider{height:1px;background:var(--border);margin:28px 0}
+.role-anchor{scroll-margin-top:24px}
+.overview-intro{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:32px}
+.track-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px;position:relative;overflow:hidden}
+.track-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.track-card.ta::before{background:var(--accent-a)}.track-card.tb::before{background:var(--accent-b)}.track-card.tc::before{background:var(--accent-c)}.track-card.td::before{background:var(--accent-d)}.track-card.te::before{background:var(--accent-e)}
+.track-name{font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:4px}
+.ta .track-name{color:var(--accent-a)}.tb .track-name{color:var(--accent-b)}.tc .track-name{color:var(--accent-c)}.td .track-name{color:var(--accent-d)}.te .track-name{color:var(--accent-e)}
+.track-roles{font-size:12px;color:var(--muted);line-height:1.7}
+.mt16{margin-top:16px}.mb12{margin-bottom:12px}.mb20{margin-bottom:20px}.text-muted{color:var(--muted)}.fs13{font-size:13px}.fw500{font-weight:500}
+</style>
+</head>
+<body>
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">AI<span>TalentLab</span></div>
+    <div class="sidebar-sub">AI/ML Recruiter Field Guide</div>
+  </div>
+  <div class="nav-section"><div class="nav-label">Overview</div><a class="nav-item" href="#overview">Role Landscape</a><a class="nav-item" href="#quick-compare">Quick Compare</a></div>
+  <div class="nav-section"><div class="nav-label">Research Track</div><a class="nav-item" href="#r1"><span class="nav-track track-a"></span>ML Research Scientist</a><a class="nav-item" href="#r2"><span class="nav-track track-a"></span>Research Engineer</a><a class="nav-item" href="#r3"><span class="nav-track track-a"></span>AI Safety Researcher</a></div>
+  <div class="nav-section"><div class="nav-label">Applied Science Track</div><a class="nav-item" href="#s1"><span class="nav-track track-b"></span>Applied ML Scientist</a><a class="nav-item" href="#s2"><span class="nav-track track-b"></span>ML Scientist — Recs/Ranking</a></div>
+  <div class="nav-section"><div class="nav-label">Engineering Track</div><a class="nav-item" href="#e1"><span class="nav-track track-c"></span>Applied AI / GenAI Engineer</a><a class="nav-item" href="#e2"><span class="nav-track track-c"></span>ML Engineer</a><a class="nav-item" href="#e3"><span class="nav-track track-c"></span>Computer Vision Engineer</a></div>
+  <div class="nav-section"><div class="nav-label">Infrastructure Track</div><a class="nav-item" href="#i1"><span class="nav-track track-d"></span>MLOps / ML Platform Eng</a><a class="nav-item" href="#i2"><span class="nav-track track-d"></span>LLMOps Engineer</a><a class="nav-item" href="#i3"><span class="nav-track track-d"></span>AI Infra / Compiler Eng</a></div>
+  <div class="nav-section"><div class="nav-label">Analytics Track</div><a class="nav-item" href="#a1"><span class="nav-track track-e"></span>Data Scientist</a><a class="nav-item" href="#a2"><span class="nav-track track-e"></span>Analytics Engineer</a></div>
+  <div class="nav-section"><div class="nav-label">Disciplines</div>
+    <a class="nav-item" href="#d-nlp"><span class="nav-track track-disc"></span>NLP / LLMs</a>
+    <a class="nav-item" href="#d-cv"><span class="nav-track track-disc"></span>Computer Vision</a>
+    <a class="nav-item" href="#d-rl"><span class="nav-track track-disc"></span>RL &amp; RLHF</a>
+    <a class="nav-item" href="#d-recs"><span class="nav-track track-disc"></span>Recommendations &amp; Ranking</a>
+    <a class="nav-item" href="#d-multimodal"><span class="nav-track track-disc"></span>Multimodal AI</a>
+    <a class="nav-item" href="#d-genai"><span class="nav-track track-disc"></span>Generative AI / Diffusion</a>
+    <a class="nav-item" href="#d-speech"><span class="nav-track track-disc"></span>Speech &amp; Audio AI</a>
+    <a class="nav-item" href="#d-safety"><span class="nav-track track-disc"></span>AI Safety &amp; Alignment</a>
+    <a class="nav-item" href="#d-edge"><span class="nav-track track-disc"></span>Edge AI / On-device ML</a>
+    <a class="nav-item" href="#d-nl2sql"><span class="nav-track track-disc"></span>SQL-to-Text / NL2SQL</a>
+    <a class="nav-item" href="#d-classical"><span class="nav-track track-disc"></span>Classical ML &amp; Algorithms</a>
+    <a class="nav-item" href="#d-ts"><span class="nav-track track-disc"></span>Time Series &amp; Forecasting</a>
+  </div>
+</nav>
+
+<main id="main">
+<div class="page-hero">
+  <h1>AI/ML Recruiter<br>Field Guide</h1>
+  <p>Role taxonomy, sourcing channels, green/red signals, and discipline mapping — built for AI/ML recruiters navigating a complex and rapidly evolving talent market.</p>
+  <div class="hero-meta"><span class="hero-tag">13 Roles</span><span class="hero-tag">5 Tracks</span><span class="hero-tag">12 Disciplines</span><span class="hero-tag">AITalentLab</span></div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="content-section role-anchor" id="overview">
+  <div class="section-label">Overview</div>
+  <h2 class="section-title">Role Landscape</h2>
+  <p class="text-muted fs13 mb20">AI/ML roles cluster into five tracks based on where the work sits relative to research, product, and infrastructure.</p>
+  <div class="overview-intro">
+    <div class="track-card ta"><div class="track-name">Research</div><div class="track-roles">ML Research Scientist<br>Research Engineer<br>AI Safety Researcher</div></div>
+    <div class="track-card tb"><div class="track-name">Applied Science</div><div class="track-roles">Applied ML Scientist<br>ML Scientist — Recs/Ranking</div></div>
+    <div class="track-card tc"><div class="track-name">Engineering</div><div class="track-roles">Applied AI / GenAI Engineer<br>ML Engineer<br>Computer Vision Engineer</div></div>
+    <div class="track-card td"><div class="track-name">Infrastructure</div><div class="track-roles">MLOps / ML Platform Eng<br>LLMOps Engineer<br>AI Infra / Compiler Eng</div></div>
+    <div class="track-card te"><div class="track-name">Analytics</div><div class="track-roles">Data Scientist<br>Analytics Engineer</div></div>
+  </div>
+
+  <!-- INTERACTIVE VENN -->
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px 24px 20px;margin-bottom:24px;overflow:hidden">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <div class="section-label" style="margin-bottom:0">Track Relationship Map</div>
+      <span style="font-size:11px;color:var(--subtle)">Hover a track or overlap zone to explore</span>
+    </div>
+    <svg id="vennSvg" viewBox="0 0 820 445" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;cursor:crosshair;font-family:'DM Sans',sans-serif">
+      <circle id="c-research"       cx="185" cy="200" r="140" fill="rgba(184,169,245,0.12)" stroke="#b8a9f5" stroke-width="1.5" style="transition:fill-opacity .15s,stroke-opacity .15s,stroke-width .15s"/>
+      <circle id="c-applied"        cx="375" cy="152" r="145" fill="rgba(126,212,176,0.12)" stroke="#7ed4b0" stroke-width="1.5" style="transition:fill-opacity .15s,stroke-opacity .15s,stroke-width .15s"/>
+      <circle id="c-engineering"    cx="565" cy="200" r="140" fill="rgba(244,168,124,0.12)" stroke="#f4a87c" stroke-width="1.5" style="transition:fill-opacity .15s,stroke-opacity .15s,stroke-width .15s"/>
+      <circle id="c-analytics"      cx="300" cy="352" r="118" fill="rgba(126,200,212,0.12)" stroke="#7ec8d4" stroke-width="1.5" style="transition:fill-opacity .15s,stroke-opacity .15s,stroke-width .15s"/>
+      <circle id="c-infrastructure" cx="475" cy="352" r="118" fill="rgba(244,198,124,0.12)" stroke="#f4c67c" stroke-width="1.5" style="transition:fill-opacity .15s,stroke-opacity .15s,stroke-width .15s"/>
+      <g id="l-research" pointer-events="none" style="transition:opacity .15s"><text x="95" y="183" fill="#b8a9f5" font-size="11" font-weight="600" letter-spacing="0.8" text-anchor="middle">RESEARCH</text><text x="95" y="199" fill="#b8a9f5" font-size="10" text-anchor="middle" opacity="0.7">R1 · R2 · R3</text></g>
+      <g id="l-applied" pointer-events="none" style="transition:opacity .15s"><text x="375" y="50" fill="#7ed4b0" font-size="11" font-weight="600" letter-spacing="0.8" text-anchor="middle">APPLIED SCIENCE</text><text x="375" y="66" fill="#7ed4b0" font-size="10" text-anchor="middle" opacity="0.7">S1 · S2</text></g>
+      <g id="l-engineering" pointer-events="none" style="transition:opacity .15s"><text x="645" y="183" fill="#f4a87c" font-size="11" font-weight="600" letter-spacing="0.8" text-anchor="middle">ENGINEERING</text><text x="645" y="199" fill="#f4a87c" font-size="10" text-anchor="middle" opacity="0.7">E1 · E2 · E3</text></g>
+      <g id="l-analytics" pointer-events="none" style="transition:opacity .15s"><text x="218" y="418" fill="#7ec8d4" font-size="11" font-weight="600" letter-spacing="0.8" text-anchor="middle">ANALYTICS</text><text x="218" y="434" fill="#7ec8d4" font-size="10" text-anchor="middle" opacity="0.7">A1 · A2</text></g>
+      <g id="l-infrastructure" pointer-events="none" style="transition:opacity .15s"><text x="548" y="418" fill="#f4c67c" font-size="11" font-weight="600" letter-spacing="0.8" text-anchor="middle">INFRASTRUCTURE</text><text x="548" y="434" fill="#f4c67c" font-size="10" text-anchor="middle" opacity="0.7">I1 · I2 · I3</text></g>
+      <g id="overlap-hints" pointer-events="none" opacity="0.42" style="transition:opacity .15s">
+        <text x="280" y="163" fill="#e8e4d8" font-size="9" text-anchor="middle">ML theory + paper impl.</text>
+        <text x="466" y="163" fill="#e8e4d8" font-size="9" text-anchor="middle">Production model ownership</text>
+        <text x="518" y="280" fill="#e8e4d8" font-size="9" text-anchor="middle">Model serving &amp; deployment</text>
+        <text x="337" y="250" fill="#e8e4d8" font-size="9" text-anchor="middle">Statistical modeling</text>
+        <text x="388" y="354" fill="#e8e4d8" font-size="9" text-anchor="middle">Data pipelines</text>
+      </g>
+    </svg>
+    <div id="venn-panel" style="margin-top:14px;padding:16px 18px;background:var(--bg3);border-radius:8px;border:1px solid var(--border);min-height:72px">
+      <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center;justify-content:center;padding:6px 0 2px">
+        <span style="font-size:12px;color:#b8a9f5;font-weight:500">● Research</span>
+        <span style="font-size:12px;color:#7ed4b0;font-weight:500">● Applied Science</span>
+        <span style="font-size:12px;color:#f4a87c;font-weight:500">● Engineering</span>
+        <span style="font-size:12px;color:#f4c67c;font-weight:500">● Infrastructure</span>
+        <span style="font-size:12px;color:#7ec8d4;font-weight:500">● Analytics</span>
+      </div>
+      <p style="font-size:11px;color:var(--subtle);text-align:center;margin-top:8px">Move cursor over any circle or overlap zone — panel updates with roles, skills &amp; sourcing</p>
+    </div>
+  </div>
+
+  <div class="tbl-container">
+    <table>
+      <thead><tr><th>Role</th><th>Core Output</th><th>Primary Language</th><th>PhD Common?</th></tr></thead>
+      <tbody>
+        <tr><td colspan="4" class="overview-track-header" style="color:var(--accent-a)">Research Track</td></tr>
+        <tr><td class="fw500">ML Research Scientist</td><td>Novel algorithms, papers, benchmarks</td><td>Python, LaTeX</td><td>Yes — often required</td></tr>
+        <tr><td class="fw500">Research Engineer</td><td>Research infrastructure, experiment pipelines, scaling</td><td>Python, C++, CUDA</td><td>Sometimes</td></tr>
+        <tr><td class="fw500">AI Safety Researcher</td><td>Alignment techniques, interpretability, red-team findings</td><td>Python</td><td>Often</td></tr>
+        <tr><td colspan="4" class="overview-track-header" style="color:var(--accent-b)">Applied Science Track</td></tr>
+        <tr><td class="fw500">Applied ML Scientist</td><td>Models in production, experiment results, business metrics</td><td>Python, SQL</td><td>MS common, PhD helpful</td></tr>
+        <tr><td class="fw500">ML Scientist — Recs/Ranking</td><td>Ranking models, retrieval systems, engagement lift</td><td>Python, SQL, Scala</td><td>MS common</td></tr>
+        <tr><td colspan="4" class="overview-track-header" style="color:var(--accent-c)">Engineering Track</td></tr>
+        <tr><td class="fw500">Applied AI / GenAI Engineer</td><td>LLM-powered products, APIs, RAG pipelines</td><td>Python, TypeScript</td><td>Rarely required</td></tr>
+        <tr><td class="fw500">ML Engineer</td><td>Training pipelines, model optimization, serving infra</td><td>Python, C++, CUDA</td><td>Sometimes</td></tr>
+        <tr><td class="fw500">Computer Vision Engineer</td><td>Detection/segmentation models, CV product features</td><td>Python, C++</td><td>Sometimes</td></tr>
+        <tr><td colspan="4" class="overview-track-header" style="color:var(--accent-d)">Infrastructure Track</td></tr>
+        <tr><td class="fw500">MLOps / ML Platform Eng</td><td>Training infra, feature stores, deployment pipelines</td><td>Python, Go, Terraform</td><td>Rarely</td></tr>
+        <tr><td class="fw500">LLMOps Engineer</td><td>LLM eval pipelines, prompt management, fine-tune infra</td><td>Python, TypeScript</td><td>Rarely</td></tr>
+        <tr><td class="fw500">AI Infra / Compiler Eng</td><td>Kernel optimization, hardware-level ML acceleration</td><td>C++, CUDA, Triton</td><td>Often</td></tr>
+        <tr><td colspan="4" class="overview-track-header" style="color:var(--accent-e)">Analytics Track</td></tr>
+        <tr><td class="fw500">Data Scientist</td><td>Analyses, forecasts, A/B test readouts, stakeholder decks</td><td>Python, SQL, R</td><td>MS common</td></tr>
+        <tr><td class="fw500">Analytics Engineer</td><td>dbt models, data marts, semantic layer</td><td>SQL, dbt, Python</td><td>Rarely</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- QUICK COMPARE -->
+<div class="content-section role-anchor" id="quick-compare">
+  <div class="section-label">Common Confusion Points</div>
+  <h2 class="section-title">Who Does What</h2>
+  <div class="tbl-container"><table>
+    <thead><tr><th>Confusion</th><th>The Actual Difference</th><th>How to Distinguish Quickly</th></tr></thead>
+    <tbody>
+      <tr><td class="fw500">Research Scientist vs. Applied ML Scientist</td><td>RS invents new ML methods and publishes. Applied ML Scientist applies existing methods to product problems.</td><td>Ask: "Tell me about a paper you've published." RS has an answer. Applied ML Scientist often doesn't — and that's fine.</td></tr>
+      <tr><td class="fw500">Applied ML Scientist vs. ML Engineer</td><td>Applied ML Scientist owns the modeling problem. ML Engineer owns the engineering problem.</td><td>Check portfolio: does work center on model artifacts, or distributed systems and infra?</td></tr>
+      <tr><td class="fw500">ML Engineer vs. Applied AI / GenAI Engineer</td><td>ML Engineer builds/optimizes models. GenAI Engineer integrates existing LLMs into products.</td><td>Ask: "When did you last write a training loop?" ML Engineers do it regularly. GenAI Engineers rarely train from scratch.</td></tr>
+      <tr><td class="fw500">MLOps vs. LLMOps</td><td>MLOps is general ML infra. LLMOps is LLM-specific (evals, prompt versioning, fine-tune orchestration).</td><td>Ask about their stack: Kubeflow/Metaflow vs. LangSmith/Weights &amp; Biases/PromptLayer.</td></tr>
+      <tr><td class="fw500">Data Scientist vs. Applied ML Scientist</td><td>Data Scientist derives insights. Applied ML Scientist builds models that run in production at scale.</td><td>Ask: "What's the heaviest production model you own end to end?" DS often doesn't own prod models.</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<!-- R1 -->
+<div class="content-section role-anchor" id="r1">
+  <div class="role-header"><div class="role-badge badge-a">R1</div><div class="role-header-text"><h2>ML Research Scientist</h2><p>Invents novel algorithms, publishes findings, advances the field's theoretical foundations</p><span class="track-pill pill-a">Research Track</span></div></div>
+  <div class="two-col">
+    <div>
+      <div class="card card-accent-a mb12"><div class="card-title">What This Role Actually Does</div><p>Formulates new research problems, designs experiments, implements and evaluates novel methods, and disseminates findings via papers and talks. Output is ideas and proofs-of-concept — not production systems.</p></div>
+      <div class="card mb12"><div class="card-title">Interview Format</div><p>Research presentation, ML theory deep-dives, paper discussion. Rarely includes Leetcode. The bar is essentially a peer academic review.</p></div>
+    </div>
+    <div><div class="card mb12"><div class="card-title">Skills</div><div class="chips"><span class="chip chip-must">Deep Learning theory</span><span class="chip chip-must">PyTorch / JAX</span><span class="chip chip-must">Strong math (probability, optimization, linear algebra)</span><span class="chip chip-must">Published research (top venues)</span><span class="chip chip-strong">CUDA / GPU programming</span><span class="chip chip-strong">Transformers / attention mechanisms</span><span class="chip chip-not">Production SWE NOT required</span><span class="chip chip-not">SQL NOT required</span></div></div></div>
+  </div>
+  <div class="signals-grid">
+    <div class="signal-box green"><div class="signal-title green">Green Signals</div><ul class="signal-list"><li>First/second author at NeurIPS, ICML, ICLR, ACL, CVPR, EMNLP</li><li>PhD from top ML program (MIT, Stanford, CMU, Berkeley, Toronto, Oxford)</li><li>Postdoc or research internship at a top lab</li><li>Growing citation count — work being built upon</li></ul></div>
+    <div class="signal-box red"><div class="signal-title red">Red Signals</div><ul class="signal-list"><li>No publications or only workshop papers for a senior role</li><li>Can't explain the intuition behind their own research</li><li>PhD on a non-ML topic pivoting without postdoc bridge</li><li>Claims research experience but portfolio is all applied product work</li></ul></div>
+  </div>
+  <div class="section-label mt16">Sourcing Channels</div>
+  <div class="card"><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">Paper author lists at NeurIPS/ICML/ICLR/ACL proceedings <span>(semanticscholar.org, paperswithcode.com, arxiv.org)</span></div></div><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">PhD program alumni lists — ML labs at Berkeley, Stanford, CMU, MIT, UofT, Oxford</div></div><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">Conference networking — NeurIPS, ICML, ICLR poster sessions</div></div><div class="channel-row"><span class="channel-yield yield-med">Medium</span><div class="channel-text">LinkedIn filtered by PhD + "Research Scientist" at lab names (DeepMind, FAIR, Google Brain, MSR, OpenAI)</div></div></div>
+</div>
+
+<!-- R2 -->
+<div class="content-section role-anchor" id="r2">
+  <div class="role-header"><div class="role-badge badge-a">R2</div><div class="role-header-text"><h2>Research Engineer (RSE)</h2><p>Implements research at scale; bridges algorithmic ideas and working, reproducible systems</p><span class="track-pill pill-a">Research Track</span></div></div>
+  <div class="two-col">
+    <div><div class="card card-accent-a mb12"><div class="card-title">What This Role Actually Does</div><p>Builds infrastructure to test research ideas at scale: distributed training frameworks, experiment pipelines, custom CUDA kernels, evaluation harnesses. Does not need to generate novel ideas, but must have enough ML depth to implement complex papers correctly.</p></div><div class="card mb12"><div class="card-title">How It Differs From ML Engineer</div><p>Research Engineers sit inside research orgs and serve research velocity. ML Engineers sit inside product orgs and ship to users. Research Engineers tolerate higher ambiguity; ML Engineers optimize for reliability.</p></div></div>
+    <div><div class="card mb12"><div class="card-title">Skills</div><div class="chips"><span class="chip chip-must">Strong software engineering</span><span class="chip chip-must">PyTorch / JAX internals</span><span class="chip chip-must">Distributed training (FSDP, DeepSpeed, Megatron)</span><span class="chip chip-strong">CUDA / Triton kernel writing</span><span class="chip chip-strong">Reading and implementing ML papers</span><span class="chip chip-nice">C++ systems experience</span><span class="chip chip-not">Publications NOT required</span></div></div></div>
+  </div>
+  <div class="signals-grid">
+    <div class="signal-box green"><div class="signal-title green">Green Signals</div><ul class="signal-list"><li>GitHub with complex ML systems code — training loops, custom ops</li><li>Experience implementing papers (reference specific papers + repos)</li><li>Has worked inside a research lab or research-adjacent team</li><li>Strong SWE fundamentals plus ML domain knowledge</li></ul></div>
+    <div class="signal-box red"><div class="signal-title red">Red Signals</div><ul class="signal-list"><li>Pure SWE background with no ML implementation experience</li><li>ML experience is only at the Keras/high-level API layer</li><li>No evidence of working with large-scale training jobs</li></ul></div>
+  </div>
+  <div class="section-label mt16">Sourcing Channels</div>
+  <div class="card"><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">GitHub — contributors to Hugging Face Transformers, Megatron-LM, DeepSpeed, trlX, LLaMA implementations</div></div><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">Current Research Engineers at OpenAI, Anthropic, Cohere, DeepMind on LinkedIn</div></div><div class="channel-row"><span class="channel-yield yield-med">Medium</span><div class="channel-text">ML systems Discord servers (EleutherAI, Alignment Forum tech discussions)</div></div></div>
+</div>
+
+<!-- R3 -->
+<div class="content-section role-anchor" id="r3">
+  <div class="role-header"><div class="role-badge badge-a">R3</div><div class="role-header-text"><h2>AI Safety / Alignment Researcher</h2><p>Ensures AI systems behave as intended; works on interpretability, RLHF, robustness, and alignment</p><span class="track-pill pill-a">Research Track</span></div></div>
+  <div class="two-col">
+    <div><div class="card card-accent-a mb12"><div class="card-title">What This Role Actually Does</div><p>Studies failure modes of large ML systems and develops techniques to prevent them. Sub-areas: interpretability, RLHF and Constitutional AI, red-teaming, robustness, and formal specification. Increasingly applied at every major lab as AI regulation pressures grow.</p></div></div>
+    <div><div class="card mb12"><div class="card-title">Skills</div><div class="chips"><span class="chip chip-must">ML fundamentals (LLMs, transformers)</span><span class="chip chip-must">RLHF / reward modeling</span><span class="chip chip-strong">Mechanistic interpretability</span><span class="chip chip-strong">Red-teaming / adversarial evaluation</span><span class="chip chip-strong">Formal reasoning or decision theory</span><span class="chip chip-nice">Philosophy or ethics background</span></div></div></div>
+  </div>
+  <div class="signals-grid">
+    <div class="signal-box green"><div class="signal-title green">Green Signals</div><ul class="signal-list"><li>Published at AI safety venues or Alignment Forum technical posts</li><li>Prior work at Anthropic, ARC, MIRI, Redwood, DeepMind Safety</li><li>Interpretability work (probing, activation patching, circuit analysis)</li></ul></div>
+    <div class="signal-box red"><div class="signal-title red">Red Signals</div><ul class="signal-list"><li>Only policy/ethics background with no ML implementation ability</li><li>Conflates AI safety with cybersecurity or data privacy</li><li>No hands-on experience with LLMs or training processes</li></ul></div>
+  </div>
+  <div class="section-label mt16">Sourcing Channels</div>
+  <div class="card"><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">Alignment Forum and LessWrong technical sequences</div></div><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">ARC Evals, Redwood Research, CHAI (UC Berkeley) alumni</div></div><div class="channel-row"><span class="channel-yield yield-med">Medium</span><div class="channel-text">MATS / ARENA / AI safety bootcamp graduates</div></div></div>
+</div>
+
+<!-- S1 -->
+<div class="content-section role-anchor" id="s1">
+  <div class="role-header"><div class="role-badge badge-b">S1</div><div class="role-header-text"><h2>Applied ML Scientist</h2><p>Applies ML methods to product and business problems; owns models from experimentation through production</p><span class="track-pill pill-b">Applied Science Track</span></div></div>
+  <div class="two-col">
+    <div><div class="card card-accent-b mb12"><div class="card-title">What This Role Actually Does</div><p>Runs the full ML lifecycle: frames the problem, selects and fine-tunes models, runs A/B experiments, owns the production model, and iterates on business metrics. More product-oriented than a Research Scientist; more modeling-oriented than a Data Scientist.</p></div></div>
+    <div><div class="card mb12"><div class="card-title">Skills</div><div class="chips"><span class="chip chip-must">Python + ML frameworks (PyTorch/TF/sklearn)</span><span class="chip chip-must">Feature engineering &amp; model selection</span><span class="chip chip-must">A/B testing methodology</span><span class="chip chip-must">SQL</span><span class="chip chip-strong">Fine-tuning / transfer learning</span><span class="chip chip-strong">Model evaluation &amp; monitoring</span><span class="chip chip-nice">Causal inference</span><span class="chip chip-not">Publishing papers NOT expected</span></div></div><div class="card"><div class="card-title">Interview Format</div><p>ML case study, coding (ML-focused), model debugging scenario, metrics discussion. Some companies add statistics/probability screen.</p></div></div>
+  </div>
+  <div class="signals-grid">
+    <div class="signal-box green"><div class="signal-title green">Green Signals</div><ul class="signal-list"><li>MS or PhD with production model ownership</li><li>Can speak to business impact of their models (lift, revenue, error rate)</li><li>Has run A/B tests and interpreted results with statistical rigor</li></ul></div>
+    <div class="signal-box red"><div class="signal-title red">Red Signals</div><ul class="signal-list"><li>Only research/academic experience with no production exposure</li><li>Résumé lists model names without outcomes</li><li>No evidence of cross-functional work with product/engineering</li></ul></div>
+  </div>
+  <div class="section-label mt16">Sourcing Channels</div>
+  <div class="card"><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">LinkedIn "Applied Scientist" at Airbnb, Uber, Netflix, DoorDash, LinkedIn, Stripe</div></div><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">Kaggle Masters/Grandmasters</div></div><div class="channel-row"><span class="channel-yield yield-med">Medium</span><div class="channel-text">MS graduates from CMU MCDS, Stanford CS, UW with industry practicum</div></div></div>
+</div>
+
+<!-- S2 -->
+<div class="content-section role-anchor" id="s2">
+  <div class="role-header"><div class="role-badge badge-b">S2</div><div class="role-header-text"><h2>ML Scientist — Recommendations &amp; Ranking</h2><p>Builds models powering feed ranking, search, and personalized content recommendation at scale</p><span class="track-pill pill-b">Applied Science Track</span></div></div>
+  <div class="two-col">
+    <div><div class="card card-accent-b mb12"><div class="card-title">What This Role Actually Does</div><p>Specializes in the retrieval-then-ranking pipeline that powers social feeds, search, content discovery, and e-commerce. Works with embedding models for candidate generation, learning-to-rank models for ordering, and real-time feature systems.</p></div></div>
+    <div><div class="card mb12"><div class="card-title">Skills</div><div class="chips"><span class="chip chip-must">Collaborative filtering &amp; embedding-based retrieval</span><span class="chip chip-must">Learning-to-rank (LambdaMART, pairwise/listwise)</span><span class="chip chip-must">Feature stores &amp; real-time feature engineering</span><span class="chip chip-strong">ANN indexing (FAISS, ScaNN, HNSW)</span><span class="chip chip-strong">Spark / distributed data processing</span><span class="chip chip-nice">Two-tower models, knowledge graphs</span></div></div></div>
+  </div>
+  <div class="signals-grid">
+    <div class="signal-box green"><div class="signal-title green">Green Signals</div><ul class="signal-list"><li>Prior at Meta, TikTok, Netflix, Spotify, Pinterest, LinkedIn, Amazon</li><li>Specific knowledge of retrieval-ranking pipeline stages</li><li>Can speak to engagement metric trade-offs (CTR vs. dwell time)</li></ul></div>
+    <div class="signal-box red"><div class="signal-title red">Red Signals</div><ul class="signal-list"><li>General ML background with no recs/ranking-specific project</li><li>Conflates recommendation with classification</li><li>No experience with large-scale item catalogs or user embeddings</li></ul></div>
+  </div>
+  <div class="section-label mt16">Sourcing Channels</div>
+  <div class="card"><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">LinkedIn "Recommendations" OR "Ranking" + "ML Scientist" at Meta, Netflix, Spotify, TikTok, Pinterest</div></div><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">ACM RecSys conference — paper authors and attendees</div></div><div class="channel-row"><span class="channel-yield yield-med">Medium</span><div class="channel-text">ML blog authors at Meta AI, Netflix Tech Blog, Spotify Engineering</div></div></div>
+</div>
+
+<!-- E1 -->
+<div class="content-section role-anchor" id="e1">
+  <div class="role-header"><div class="role-badge badge-c">E1</div><div class="role-header-text"><h2>Applied AI / GenAI Engineer</h2><p>Integrates LLMs and AI APIs into products; builds RAG systems, AI agents, and LLM-powered features</p><span class="track-pill pill-c">Engineering Track</span></div></div>
+  <div class="two-col">
+    <div><div class="card card-accent-c mb12"><div class="card-title">What This Role Actually Does</div><p>The "solid software engineer who works with AI" role. Rarely trains models from scratch. Integrates OpenAI/Anthropic/Gemini APIs, builds RAG pipelines, designs multi-step AI agents, implements prompt management systems, and ships AI-native product features.</p></div><div class="confusion"><div class="confusion-title">E1 vs. E2 (ML Engineer)</div><p><strong>Applied AI/GenAI Engineer:</strong> Integrates existing models into products. <strong>ML Engineer:</strong> Trains, optimizes, and serves models. "Build a chatbot" → E1. "Optimize inference latency for a 70B model" → E2.</p></div></div>
+    <div><div class="card mb12"><div class="card-title">Skills</div><div class="chips"><span class="chip chip-must">Strong Python / SWE fundamentals</span><span class="chip chip-must">LLM API integration</span><span class="chip chip-must">RAG architecture (vector DBs, chunking, retrieval)</span><span class="chip chip-strong">Prompt engineering &amp; structured outputs</span><span class="chip chip-strong">LangChain / LlamaIndex / or equivalent</span><span class="chip chip-strong">TypeScript for full-stack AI features</span><span class="chip chip-not">Training models from scratch NOT required</span><span class="chip chip-not">Deep ML theory NOT required</span></div></div></div>
+  </div>
+  <div class="signals-grid">
+    <div class="signal-box green"><div class="signal-title green">Green Signals</div><ul class="signal-list"><li>Has shipped an LLM-powered feature to real users</li><li>Understands retrieval eval — recall, precision, reranking</li><li>Has dealt with production LLM issues: hallucination, latency, cost</li></ul></div>
+    <div class="signal-box red"><div class="signal-title red">Red Signals</div><ul class="signal-list"><li>Portfolio is only tutorial reproductions from YouTube guides</li><li>Can't explain how RAG works at a component level</li><li>No production software engineering experience</li></ul></div>
+  </div>
+  <div class="section-label mt16">Sourcing Channels</div>
+  <div class="card"><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">GitHub — contributors to LangChain, LlamaIndex, Haystack, DSPy</div></div><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">AI-native startup alumni — Adept, Character.ai, Inflection, Cohere, Together AI</div></div><div class="channel-row"><span class="channel-yield yield-med">Medium</span><div class="channel-text">Latent Space podcast / AI Engineer community</div></div></div>
+</div>
+
+<!-- E2 -->
+<div class="content-section role-anchor" id="e2">
+  <div class="role-header"><div class="role-badge badge-c">E2</div><div class="role-header-text"><h2>ML Engineer</h2><p>Owns the training, optimization, and serving infrastructure for ML models in a product context</p><span class="track-pill pill-c">Engineering Track</span></div></div>
+  <div class="two-col">
+    <div><div class="card card-accent-c mb12"><div class="card-title">What This Role Actually Does</div><p>Sits between the Applied ML Scientist (who designs the model) and MLOps (who maintains the infra). ML Engineers write training loops, implement model architectures, optimize for throughput and latency, and build the serving layer.</p></div></div>
+    <div><div class="card mb12"><div class="card-title">Skills</div><div class="chips"><span class="chip chip-must">PyTorch (internals — autograd, DataLoader)</span><span class="chip chip-must">Training pipeline development</span><span class="chip chip-must">Model optimization (quantization, pruning, distillation)</span><span class="chip chip-must">Model serving (TorchServe, Triton, TensorRT)</span><span class="chip chip-strong">Distributed training (DDP, FSDP)</span><span class="chip chip-strong">GPU utilization &amp; profiling</span><span class="chip chip-nice">CUDA kernel basics</span></div></div></div>
+  </div>
+  <div class="signals-grid">
+    <div class="signal-box green"><div class="signal-title green">Green Signals</div><ul class="signal-list"><li>Can explain training loop internals — gradient accumulation, mixed precision</li><li>Experience reducing inference latency (p99 numbers)</li><li>Comfortable reading and implementing ML papers into training code</li></ul></div>
+    <div class="signal-box red"><div class="signal-title red">Red Signals</div><ul class="signal-list"><li>Only has scikit-learn / classical ML experience</li><li>ML work is purely at the notebook/experimentation level</li><li>Can't distinguish between training-time and inference-time optimization</li></ul></div>
+  </div>
+  <div class="section-label mt16">Sourcing Channels</div>
+  <div class="card"><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">LinkedIn "ML Engineer" or "Machine Learning Engineer" + PyTorch at companies with known ML products</div></div><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">GitHub contributors to PyTorch, TensorRT, ONNX Runtime, Triton Inference Server</div></div><div class="channel-row"><span class="channel-yield yield-med">Medium</span><div class="channel-text">MLOps community (mlops.community Slack)</div></div></div>
+</div>
+
+<!-- E3 -->
+<div class="content-section role-anchor" id="e3">
+  <div class="role-header"><div class="role-badge badge-c">E3</div><div class="role-header-text"><h2>Computer Vision Engineer</h2><p>Builds and deploys vision models for detection, segmentation, classification, and generation tasks</p><span class="track-pill pill-c">Engineering Track</span></div></div>
+  <div class="two-col">
+    <div><div class="card card-accent-c mb12"><div class="card-title">What This Role Actually Does</div><p>Specializes in visual data: trains object detection models (YOLO, DETR), semantic/instance segmentation (SAM, Mask R-CNN), image classification, and generative CV. Heavy C++ for production. Common domains: AV, robotics, healthcare imaging, AR/VR, content moderation.</p></div></div>
+    <div><div class="card mb12"><div class="card-title">Skills</div><div class="chips"><span class="chip chip-must">OpenCV, PyTorch for vision</span><span class="chip chip-must">CNN architectures (ResNet, EfficientNet, ViT)</span><span class="chip chip-must">Detection/segmentation (YOLO, DETR, SAM)</span><span class="chip chip-strong">C++ for deployment</span><span class="chip chip-strong">Model quantization for edge</span><span class="chip chip-nice">3D CV — PointNet, NeRF</span></div></div></div>
+  </div>
+  <div class="signals-grid">
+    <div class="signal-box green"><div class="signal-title green">Green Signals</div><ul class="signal-list"><li>Domain-specific experience: AV (Waymo, Tesla), medical imaging, robotics</li><li>Benchmark performance on COCO, ImageNet, or domain datasets</li><li>C++ deployment experience (TensorRT, OpenVINO)</li></ul></div>
+    <div class="signal-box red"><div class="signal-title red">Red Signals</div><ul class="signal-list"><li>Only NLP background trying to pivot to CV without evidence</li><li>CV work is image classification only</li><li>No experience with annotation pipelines or dataset construction</li></ul></div>
+  </div>
+  <div class="section-label mt16">Sourcing Channels</div>
+  <div class="card"><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">CVPR, ICCV, ECCV paper author lists</div></div><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">AV company alumni: Waymo, Tesla AI, Cruise, Mobileye, Aurora, NVIDIA Drive</div></div><div class="channel-row"><span class="channel-yield yield-med">Medium</span><div class="channel-text">Roboflow community, computer vision Slack/Discord</div></div></div>
+</div>
+
+<!-- I1 -->
+<div class="content-section role-anchor" id="i1">
+  <div class="role-header"><div class="role-badge badge-d">I1</div><div class="role-header-text"><h2>MLOps / ML Platform Engineer</h2><p>Builds and maintains the infrastructure that enables ML teams to train, deploy, and monitor models at scale</p><span class="track-pill pill-d">Infrastructure Track</span></div></div>
+  <div class="two-col">
+    <div><div class="card card-accent-d mb12"><div class="card-title">What This Role Actually Does</div><p>Owns the platform layer: feature stores, training orchestration, experiment tracking, model registry, deployment pipelines, and monitoring. Does not build models — builds the systems that make building models faster and more reliable.</p></div></div>
+    <div><div class="card mb12"><div class="card-title">Skills</div><div class="chips"><span class="chip chip-must">ML workflow orchestration (Kubeflow, Metaflow, Airflow)</span><span class="chip chip-must">Kubernetes + Docker</span><span class="chip chip-must">Feature stores (Feast, Tecton, Hopsworks)</span><span class="chip chip-must">Model serving infrastructure</span><span class="chip chip-strong">Terraform / IaC</span><span class="chip chip-strong">Monitoring (Prometheus, data drift detection)</span></div></div></div>
+  </div>
+  <div class="signals-grid">
+    <div class="signal-box green"><div class="signal-title green">Green Signals</div><ul class="signal-list"><li>Has built or operated a feature store or model registry</li><li>Can justify platform choices (Feast vs. Tecton, Kubeflow vs. Metaflow)</li><li>Prior work at an ML-heavy company (Uber, Airbnb, Lyft)</li></ul></div>
+    <div class="signal-box red"><div class="signal-title red">Red Signals</div><ul class="signal-list"><li>SWE or DevOps background with no ML-specific infra experience</li><li>Confuses MLOps with data engineering</li><li>No experience with model monitoring or drift detection</li></ul></div>
+  </div>
+  <div class="section-label mt16">Sourcing Channels</div>
+  <div class="card"><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">mlops.community Slack — largest dedicated community</div></div><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">LinkedIn "MLOps" OR "ML Platform" + Kubernetes at Uber, Airbnb, Lyft, Twitter</div></div><div class="channel-row"><span class="channel-yield yield-med">Medium</span><div class="channel-text">Kubeflow, Metaflow, Feast GitHub contributors</div></div></div>
+</div>
+
+<!-- I2 -->
+<div class="content-section role-anchor" id="i2">
+  <div class="role-header"><div class="role-badge badge-d">I2</div><div class="role-header-text"><h2>LLMOps Engineer</h2><p>LLM-specific operations: eval pipelines, prompt versioning, fine-tune orchestration, cost/latency management</p><span class="track-pill pill-d">Infrastructure Track</span></div></div>
+  <div class="two-col">
+    <div><div class="card card-accent-d mb12"><div class="card-title">What This Role Actually Does</div><p>An emerging role distinct from classic MLOps. Manages the LLM lifecycle: evaluation harnesses, prompt versioning and A/B testing, fine-tuning pipelines (LoRA, PEFT), model gateway routing, and latency optimization. Heavy tooling: LangSmith, W&amp;B, PromptLayer, Helicone, BrainTrust.</p></div></div>
+    <div><div class="card mb12"><div class="card-title">Skills</div><div class="chips"><span class="chip chip-must">LLM evaluation frameworks (HELM, EleutherAI Eval Harness)</span><span class="chip chip-must">Prompt management &amp; versioning</span><span class="chip chip-must">Fine-tuning with PEFT/LoRA</span><span class="chip chip-strong">LLM observability tools (LangSmith, W&amp;B)</span><span class="chip chip-strong">API gateway patterns</span><span class="chip chip-nice">vLLM / TGI for self-hosted inference</span></div></div></div>
+  </div>
+  <div class="signals-grid">
+    <div class="signal-box green"><div class="signal-title green">Green Signals</div><ul class="signal-list"><li>Has built an eval pipeline for LLM outputs (hallucination, groundedness)</li><li>Experience managing prompt drift and regression testing</li><li>Operated LLM serving at scale (cost tracking, latency SLAs)</li></ul></div>
+    <div class="signal-box red"><div class="signal-title red">Red Signals</div><ul class="signal-list"><li>Conflates LLMOps with classic MLOps</li><li>LLM experience limited to calling OpenAI API in a script</li><li>No exposure to eval methodology beyond held-out accuracy</li></ul></div>
+  </div>
+  <div class="section-label mt16">Sourcing Channels</div>
+  <div class="card"><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">LangChain / LangSmith community forums and Discord</div></div><div class="channel-row"><span class="channel-yield yield-med">Medium</span><div class="channel-text">LinkedIn: "LLMOps" OR "AI Infrastructure" at AI-native startups</div></div></div>
+</div>
+
+<!-- I3 -->
+<div class="content-section role-anchor" id="i3">
+  <div class="role-header"><div class="role-badge badge-d">I3</div><div class="role-header-text"><h2>AI Infra / Compiler Engineer</h2><p>Hardware-level ML optimization: custom kernels, compiler backends, and chip-level performance tuning</p><span class="track-pill pill-d">Infrastructure Track</span></div></div>
+  <div class="two-col">
+    <div><div class="card card-accent-d mb12"><div class="card-title">What This Role Actually Does</div><p>Operates at the lowest level of the ML stack — between ML frameworks and hardware. Writes CUDA kernels (CUTLASS, Triton), works on compiler optimization (TVM, XLA, torch.compile), and squeezes performance from accelerators (A100, H100, TPU). Extremely rare, extremely high-comp.</p></div></div>
+    <div><div class="card mb12"><div class="card-title">Skills</div><div class="chips"><span class="chip chip-must">CUDA programming (kernels, memory hierarchy, warp-level)</span><span class="chip chip-must">C++ systems programming</span><span class="chip chip-must">ML compiler knowledge (TVM, XLA, MLIR, torch.compile)</span><span class="chip chip-strong">Triton kernel writing</span><span class="chip chip-strong">GPU architecture (roofline model, tensor cores)</span><span class="chip chip-strong">CUTLASS / cuBLAS / cuDNN</span></div></div></div>
+  </div>
+  <div class="signals-grid">
+    <div class="signal-box green"><div class="signal-title green">Green Signals</div><ul class="signal-list"><li>NVIDIA / AMD / Google (XLA) / Meta (FBGEMM, CUTLASS contributor) background</li><li>Has written a custom CUDA kernel that outperforms a library implementation</li><li>Can discuss memory bandwidth utilization, warp divergence, occupancy</li></ul></div>
+    <div class="signal-box red"><div class="signal-title red">Red Signals</div><ul class="signal-list"><li>"I've used GPUs for training" without kernel-level detail</li><li>C++ background with no GPU or compiler experience</li></ul></div>
+  </div>
+  <div class="section-label mt16">Sourcing Channels</div>
+  <div class="card"><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">GitHub — CUTLASS, Triton, TVM, MLIR, XLA, PyTorch (C++/CUDA layer) contributors</div></div><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">NVIDIA, AMD, Intel (oneAPI), Google (XLA) alumni on LinkedIn — filter "CUDA" or "compiler"</div></div><div class="channel-row"><span class="channel-yield yield-med">Medium</span><div class="channel-text">GPU Mode Discord — active CUDA kernel community</div></div></div>
+</div>
+
+<!-- A1 -->
+<div class="content-section role-anchor" id="a1">
+  <div class="role-header"><div class="role-badge badge-e">A1</div><div class="role-header-text"><h2>Data Scientist</h2><p>Derives insights and supports decisions through analysis, experimentation, and predictive modeling</p><span class="track-pill pill-e">Analytics Track</span></div></div>
+  <div class="two-col">
+    <div><div class="card card-accent-e mb12"><div class="card-title">What This Role Actually Does</div><p>Uses statistical analysis, A/B testing, and ML (often classical) to answer business questions and support product decisions. Primary output is insight and recommendation, not a production model. Works closely with product and strategy teams.</p></div><div class="confusion"><div class="confusion-title">Data Scientist vs. Applied ML Scientist</div><p><strong>Data Scientist:</strong> produces insight, supports decisions. <strong>Applied ML Scientist:</strong> produces production ML systems running autonomously at scale. "Work with product teams to understand behavior" → A1. "Own the ranking model" → S1.</p></div></div>
+    <div><div class="card mb12"><div class="card-title">Skills</div><div class="chips"><span class="chip chip-must">SQL (advanced — window functions, CTEs)</span><span class="chip chip-must">Python (pandas, scipy, statsmodels)</span><span class="chip chip-must">A/B testing &amp; statistical inference</span><span class="chip chip-must">Data visualization (Tableau, Looker)</span><span class="chip chip-strong">Causal inference methods</span><span class="chip chip-strong">Classical ML (scikit-learn, XGBoost)</span><span class="chip chip-not">Deep learning NOT typically required</span></div></div></div>
+  </div>
+  <div class="signals-grid">
+    <div class="signal-box green"><div class="signal-title green">Green Signals</div><ul class="signal-list"><li>Can describe a business decision that changed based on their analysis</li><li>Strong SQL demonstrated through complex query examples</li><li>Understands experiment design: power, CUPED, novelty effects</li></ul></div>
+    <div class="signal-box red"><div class="signal-title red">Red Signals</div><ul class="signal-list"><li>Work is entirely modeling with no business impact story</li><li>Weak SQL — can only do basic aggregations</li><li>Can't walk through an A/B test design end to end</li></ul></div>
+  </div>
+  <div class="section-label mt16">Sourcing Channels</div>
+  <div class="card"><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">LinkedIn "Data Scientist" + SQL + A/B test at Meta, Google, Airbnb, Spotify, DoorDash</div></div><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">MS Statistics / Applied Math / Econometrics graduates with tech internship</div></div><div class="channel-row"><span class="channel-yield yield-med">Medium</span><div class="channel-text">DataTalks.Club community, Locally Optimistic Slack</div></div></div>
+</div>
+
+<!-- A2 -->
+<div class="content-section role-anchor" id="a2">
+  <div class="role-header"><div class="role-badge badge-e">A2</div><div class="role-header-text"><h2>Analytics Engineer</h2><p>Transforms raw data into clean, reliable data models; the layer between data engineering and data science</p><span class="track-pill pill-e">Analytics Track</span></div></div>
+  <div class="two-col">
+    <div><div class="card card-accent-e mb12"><div class="card-title">What This Role Actually Does</div><p>Owns the semantic layer of the data warehouse: writes dbt models to transform raw event data into business-logic-encoded tables, builds the metrics layer that all analysts and dashboards consume, and ensures data quality. Not a Data Scientist (doesn't run experiments), not a Data Engineer (doesn't build pipelines from source).</p></div></div>
+    <div><div class="card mb12"><div class="card-title">Skills</div><div class="chips"><span class="chip chip-must">dbt (core competency — must be fluent)</span><span class="chip chip-must">Advanced SQL</span><span class="chip chip-must">Data warehouse (Snowflake, BigQuery, Redshift, Databricks)</span><span class="chip chip-strong">Data quality testing (dbt tests, Great Expectations)</span><span class="chip chip-strong">Dimensional data modeling</span><span class="chip chip-not">ML / deep learning NOT required</span></div></div></div>
+  </div>
+  <div class="signals-grid">
+    <div class="signal-box green"><div class="signal-title green">Green Signals</div><ul class="signal-list"><li>dbt certification or large-scale dbt project ownership</li><li>Has built a metrics layer from scratch</li><li>Documentation-focused mindset</li></ul></div>
+    <div class="signal-box red"><div class="signal-title red">Red Signals</div><ul class="signal-list"><li>Confuses Analytics Engineer with Data Engineer</li><li>dbt experience is only running existing models, not designing them</li><li>No exposure to data modeling principles (star schema, SCDs)</li></ul></div>
+  </div>
+  <div class="section-label mt16">Sourcing Channels</div>
+  <div class="card"><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">dbt Community Slack (#jobs channel) — go-to community globally</div></div><div class="channel-row"><span class="channel-yield yield-high">Highest</span><div class="channel-text">LinkedIn "Analytics Engineer" + dbt in skills</div></div><div class="channel-row"><span class="channel-yield yield-med">Medium</span><div class="channel-text">Locally Optimistic Slack</div></div></div>
+</div>
+
+<!-- DISCIPLINES -->
+<div class="content-section role-anchor" id="d-nlp"><div class="disc-header"><div class="disc-icon">🔤</div><div class="disc-header-text"><h2>NLP / Large Language Models</h2><p>Discipline · Research, Applied Science, and Engineering tracks</p></div></div><div class="two-col"><div><div class="card mb12"><div class="card-title">What It Is</div><p class="fs13">Processing, understanding, and generating human language. Modern NLP is dominated by transformer-based LLMs. Sub-areas: tokenization, pretraining, instruction tuning, RLHF, RAG, information extraction, summarization, translation.</p></div></div><div><div class="card mb12"><div class="card-title">Key Companies</div><p class="fs13">OpenAI, Anthropic, Google DeepMind, Meta AI, Cohere, Mistral, AI21, Hugging Face, Microsoft (Azure AI)</p></div></div></div><div class="card"><div class="card-title">Most Common Sourcing Mistake</div><p class="fs13">Treating all NLP candidates as interchangeable. A fine-tuning specialist (S1) and a CUDA-level inference engineer (E2/I3) are completely different talent pools with no overlap.</p></div></div>
+
+<div class="content-section role-anchor" id="d-cv"><div class="disc-header"><div class="disc-icon">👁</div><div class="disc-header-text"><h2>Computer Vision</h2><p>Discipline · Engineering and Research tracks; strong C++ presence</p></div></div><div class="two-col"><div><div class="card mb12"><div class="card-title">What It Is</div><p class="fs13">Extracting meaning from visual data. Core tasks: image classification, object detection, semantic/instance segmentation, pose estimation, optical flow, 3D reconstruction. Modern CV uses ViT, SAM, DINO, and diffusion models.</p></div></div><div><div class="card mb12"><div class="card-title">Key Domains</div><p class="fs13">AV (Waymo, Tesla, Aurora), robotics, healthcare (PathAI, Recursion), security (Verkada), AR/VR (Apple Vision, Meta), content moderation</p></div></div></div><div class="card"><div class="card-title">Most Common Sourcing Mistake</div><p class="fs13">Searching "Computer Vision" and getting NLP candidates who added it as a skill. Filter specifically: require CVPR/ICCV publications, C++ experience, or domain-specific tools (OpenCV, YOLO, Detectron2, SAM).</p></div></div>
+
+<div class="content-section role-anchor" id="d-rl"><div class="disc-header"><div class="disc-icon">🎮</div><div class="disc-header-text"><h2>Reinforcement Learning &amp; RLHF</h2><p>Discipline · Research and Applied Science tracks; niche but high-value</p></div></div><div class="two-col"><div><div class="card mb12"><div class="card-title">What It Is</div><p class="fs13">RL: training agents via reward signals. Classical RL (PPO, DQN, SAC) used in robotics and gaming. RLHF: the technique behind ChatGPT/Claude — training LLMs to follow instructions using human preference data. Also: RLAIF, DPO as a simpler alternative.</p></div></div><div><div class="card mb12"><div class="card-title">Key Companies</div><p class="fs13">OpenAI, Anthropic, DeepMind, Google Brain, Cohere, Tesla, Boston Dynamics, Figure AI, 1X Technologies</p></div></div></div><div class="card"><div class="card-title">Most Common Sourcing Mistake</div><p class="fs13">Conflating RL and RLHF as one pool. Classical RL researchers (robotics, games) and RLHF practitioners (LLM alignment) use different tooling and rarely overlap.</p></div></div>
+
+<div class="content-section role-anchor" id="d-recs"><div class="disc-header"><div class="disc-icon">📡</div><div class="disc-header-text"><h2>Recommendations &amp; Ranking Systems</h2><p>Discipline · Applied Science track; concentrated at consumer tech</p></div></div><div class="two-col"><div><div class="card mb12"><div class="card-title">What It Is</div><p class="fs13">The retrieval-and-ranking pipeline powering social feeds, search, e-commerce, and content discovery. Key concepts: candidate generation, two-tower models, learning-to-rank, feature stores for real-time features, and multi-objective ranking.</p></div></div><div><div class="card mb12"><div class="card-title">Key Companies</div><p class="fs13">Meta (Feed, Reels), TikTok/ByteDance, Netflix, Spotify, YouTube, Pinterest, LinkedIn, Amazon, Etsy, DoorDash</p></div></div></div><div class="card"><div class="card-title">Sourcing Note</div><p class="fs13">One of the most domain-locked ML disciplines. Recs/Ranking specialists rarely have strong NLP or CV skills — and vice versa. The RecSys conference is the primary academic venue.</p></div></div>
+
+<div class="content-section role-anchor" id="d-multimodal"><div class="disc-header"><div class="disc-icon">🔀</div><div class="disc-header-text"><h2>Multimodal AI</h2><p>Discipline · Research and Engineering tracks; fast-growing</p></div></div><div class="two-col"><div><div class="card mb12"><div class="card-title">What It Is</div><p class="fs13">Models processing and generating across multiple modalities: text + image (GPT-4V, Claude 3, LLaVA), text + audio (Whisper), text + video (Sora, Gemini). Key architectures: CLIP, Flamingo, LLaVA, CogVLM.</p></div></div><div><div class="card mb12"><div class="card-title">Key Companies</div><p class="fs13">OpenAI, Google DeepMind, Anthropic, Meta AI, Microsoft, Runway ML, HeyGen, ElevenLabs, Pika Labs, Stability AI</p></div></div></div><div class="card"><div class="card-title">Most Common Sourcing Mistake</div><p class="fs13">Hiring a pure NLP researcher for a multimodal role. Multimodal requires fluency in both language and vision modeling. Screen for CLIP-style pretraining experience, image encoder knowledge (ViT, ConvNext), and cross-attention mechanisms.</p></div></div>
+
+<div class="content-section role-anchor" id="d-genai"><div class="disc-header"><div class="disc-icon">🎨</div><div class="disc-header-text"><h2>Generative AI / Diffusion Models</h2><p>Discipline · Research and Engineering tracks</p></div></div><div class="two-col"><div><div class="card mb12"><div class="card-title">What It Is</div><p class="fs13">Models generating novel content: images, video, audio, 3D, code. Two main families: diffusion models (DDPM, Stable Diffusion, DALL-E 3, Sora) and autoregressive generation (GPT-4, LLaMA). Diffusion specialists need UNet/DiT architecture knowledge, noise schedules, classifier-free guidance.</p></div></div><div><div class="card mb12"><div class="card-title">Key Companies</div><p class="fs13">Stability AI, Midjourney, Runway ML, Pika, Adobe (Firefly), NVIDIA (Edify), Black Forest Labs, Ideogram, ElevenLabs</p></div></div></div><div class="card"><div class="card-title">Sourcing Note</div><p class="fs13">Diffusion model researchers are concentrated in GitHub communities: Hugging Face Diffusers contributors, A1111/ComfyUI extension developers, and arxiv/ICLR/CVPR paper authors on generative topics.</p></div></div>
+
+<div class="content-section role-anchor" id="d-speech"><div class="disc-header"><div class="disc-icon">🎙</div><div class="disc-header-text"><h2>Speech &amp; Audio AI</h2><p>Discipline · Research and Engineering tracks; specialized talent pool</p></div></div><div class="two-col"><div><div class="card mb12"><div class="card-title">What It Is</div><p class="fs13">ASR (Automatic Speech Recognition), TTS (Text-to-Speech), speaker diarization, voice cloning, audio generation. Key tools: Whisper (ASR), XTTS, VALL-E (TTS), EnCodec. Speech engineers need signal processing fundamentals (FFT, spectrograms, mel-filterbanks).</p></div></div><div><div class="card mb12"><div class="card-title">Key Companies</div><p class="fs13">ElevenLabs, Deepgram, AssemblyAI, OpenAI, Microsoft (Azure Speech), Amazon (Alexa), Apple (Siri), Google (WaveNet), Otter.ai</p></div></div></div><div class="card"><div class="card-title">Most Common Sourcing Mistake</div><p class="fs13">Treating speech engineers as NLP engineers with audio experience. Speech processing is a distinct discipline with separate venues (Interspeech, ICASSP), different math (signal processing), and different models (CTC, codec models).</p></div></div>
+
+<div class="content-section role-anchor" id="d-safety"><div class="disc-header"><div class="disc-icon">🛡</div><div class="disc-header-text"><h2>AI Safety &amp; Alignment</h2><p>Discipline · Research track; see also Role R3</p></div></div><div class="two-col"><div><div class="card mb12"><div class="card-title">What It Is</div><p class="fs13">Ensuring AI systems behave safely. Sub-disciplines: interpretability (what do neurons/circuits represent), alignment (RLHF, Constitutional AI, DPO), robustness (adversarial inputs), red-teaming (systematic elicitation of harmful behaviors), and formal verification.</p></div></div><div><div class="card mb12"><div class="card-title">Key Organizations</div><p class="fs13">Anthropic, OpenAI Safety team, Google DeepMind Safety, ARC Evals, Redwood Research, CHAI (Berkeley), UK AISI</p></div></div></div><div class="card"><div class="card-title">Sourcing Note</div><p class="fs13">This community is small, mission-driven, and tight-knit. Cold LinkedIn outreach has low yield. Community sourcing — Alignment Forum, MATS program — has much higher yield.</p></div></div>
+
+<div class="content-section role-anchor" id="d-edge"><div class="disc-header"><div class="disc-icon">📱</div><div class="disc-header-text"><h2>Edge AI / On-device ML</h2><p>Discipline · Engineering and Infrastructure tracks; hardware-adjacent</p></div></div><div class="two-col"><div><div class="card mb12"><div class="card-title">What It Is</div><p class="fs13">Running ML inference on mobile, embedded, or IoT devices without cloud connectivity. Requires aggressive model compression: quantization (INT8/INT4), pruning, knowledge distillation, neural architecture search for mobile. Key runtimes: CoreML (Apple), TFLite (Android), ONNX Runtime, MediaPipe.</p></div></div><div><div class="card mb12"><div class="card-title">Key Companies</div><p class="fs13">Apple (CoreML team), Google (TFLite), Qualcomm (AI Engine), ARM (Ethos NPU), Meta (on-device), Samsung, NVIDIA Jetson, Hailo, Syntiant</p></div></div></div><div class="card"><div class="card-title">Most Common Sourcing Mistake</div><p class="fs13">Confusing Edge AI engineers with cloud ML engineers. Edge specialists think about memory budget in megabytes, latency in milliseconds on a 4-core CPU. Screen for: INT8/INT4 quantization experience, mobile benchmark results, CoreML/TFLite deployment.</p></div></div>
+
+<div class="content-section role-anchor" id="d-nl2sql"><div class="disc-header"><div class="disc-icon">🗃</div><div class="disc-header-text"><h2>SQL-to-Text / NL2SQL</h2><p>Discipline · Applied Science and Engineering tracks</p></div></div><div class="two-col"><div><div class="card mb12"><div class="card-title">What It Is</div><p class="fs13">Converting natural language questions into executable SQL queries. A specialized NLP application requiring both language model knowledge and deep SQL/database understanding. Key challenges: schema linking, handling ambiguity, multi-table JOINs. Benchmarks: Spider, BIRD, WikiSQL.</p></div></div><div><div class="card mb12"><div class="card-title">Key Companies</div><p class="fs13">Databricks, Snowflake (Cortex), ThoughtSpot, Sigma Computing, Mode Analytics, Atlan, Seek AI, Defog.ai, Numbers Station</p></div></div></div><div class="card"><div class="card-title">Most Common Sourcing Mistake</div><p class="fs13">Hiring an NLP engineer without SQL depth, or a SQL expert without NLP knowledge. NL2SQL requires both. Screen for: familiarity with Spider/BIRD benchmarks and schema-linking approaches.</p></div></div>
+
+<div class="content-section role-anchor" id="d-classical"><div class="disc-header"><div class="disc-icon">📐</div><div class="disc-header-text"><h2>Classical ML &amp; Algorithms</h2><p>Discipline · Applied Science and Analytics tracks; foundational</p></div></div><div class="two-col"><div><div class="card mb12"><div class="card-title">What It Is</div><p class="fs13">Pre-deep-learning ML methods dominating many production applications: gradient boosting (XGBoost, LightGBM, CatBoost) for tabular data, logistic regression for interpretable models, SVMs, clustering, dimensionality reduction (PCA, UMAP). Heavily used in fraud, pricing, credit risk, supply chain, and search.</p></div></div><div><div class="card mb12"><div class="card-title">Key Companies</div><p class="fs13">Stripe (fraud), Affirm (credit), Square, banks (JPM, Goldman AI), insurance (Lemonade), e-commerce pricing (Amazon, Wayfair), logistics (FedEx, UPS)</p></div></div></div><div class="card"><div class="card-title">Sourcing Note</div><p class="fs13">Don't overlook classical ML talent for fintech, insurance, and supply chain roles. XGBoost + feature engineering expertise often outperforms deep learning for tabular prediction. Kaggle is the highest-yield sourcing channel.</p></div></div>
+
+<div class="content-section role-anchor" id="d-ts"><div class="disc-header"><div class="disc-icon">📈</div><div class="disc-header-text"><h2>Time Series &amp; Forecasting</h2><p>Discipline · Applied Science and Analytics tracks; specialized</p></div></div><div class="two-col"><div><div class="card mb12"><div class="card-title">What It Is</div><p class="fs13">Predicting future values from sequential data. Methods range from classical (ARIMA, Holt-Winters, Prophet) to deep learning (LSTM, Temporal Fusion Transformer, N-BEATS, PatchTST). Domains: demand forecasting, financial time series, energy forecasting, anomaly detection in metrics.</p></div></div><div><div class="card mb12"><div class="card-title">Key Companies</div><p class="fs13">Amazon (supply chain), Walmart Labs, UPS/FedEx, Uber (demand forecasting), Stripe (payment anomalies), Bloomberg/financial firms, Meta (infra capacity planning)</p></div></div></div><div class="card"><div class="card-title">Most Common Sourcing Mistake</div><p class="fs13">Hiring a general Data Scientist for a forecasting-heavy role without checking for time series-specific experience. Proper time series modeling requires understanding of seasonality, stationarity, autocorrelation, and correct cross-validation (no random splits).</p></div></div>
+
+</main>
+
+<script>
+(function(){
+  // Sidebar nav highlighting
+  const navItems=document.querySelectorAll('.nav-item[href]');
+  const sections=document.querySelectorAll('.role-anchor');
+  const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;navItems.forEach(item=>{item.classList.toggle('active',item.getAttribute('href')==='#'+id);});}});},{threshold:0.15,rootMargin:'-80px 0px -60% 0px'});
+  sections.forEach(s=>observer.observe(s));
+
+  // Venn diagram interactive
+  const svg=document.getElementById('vennSvg'),panel=document.getElementById('venn-panel');
+  if(!svg||!panel)return;
+  const CIRCLES=[{id:'research',cx:185,cy:200,r:140},{id:'applied',cx:375,cy:152,r:145},{id:'engineering',cx:565,cy:200,r:140},{id:'analytics',cx:300,cy:352,r:118},{id:'infrastructure',cx:475,cy:352,r:118}];
+  const TRACK={
+    research:{color:'#b8a9f5',name:'Research Track',sub:'Invents new ML methods · Publishes findings · Builds experiment infrastructure',roles:[['R1','ML Research Scientist','Novel algorithms, papers, theoretical advances'],['R2','Research Engineer','Implements papers at scale; builds experiment infra'],['R3','AI Safety Researcher','RLHF, interpretability, red-teaming, alignment']],skills:['Deep learning theory','PyTorch / JAX internals','CUDA / GPU programming','Top-venue publications (R1 bar)','Distributed training — FSDP, DeepSpeed (R2)'],source:['ArXiv / Semantic Scholar — filter by topic & citations','NeurIPS · ICML · ICLR · ACL conference rolls','PhD lab alumni pages (MIT, Stanford, CMU, Toronto, Oxford)']},
+    applied:{color:'#7ed4b0',name:'Applied Science Track',sub:'Applies ML to product problems · Owns models from experiment to production',roles:[['S1','Applied ML Scientist','Full ML lifecycle for a product area; A/B experiments'],['S2','ML Scientist — Recs/Ranking','Two-tower models, ANN retrieval, learning-to-rank']],skills:['Python + SQL','Model fine-tuning & transfer learning','A/B test design & statistical interpretation','Feature engineering at scale','Embedding retrieval — FAISS, ScaNN (S2)'],source:['LinkedIn — Applied Scientist at Airbnb, Uber, Netflix, DoorDash, Spotify','Kaggle Masters / Grandmasters','ACM RecSys conference paper authors (S2)']},
+    engineering:{color:'#f4a87c',name:'Engineering Track',sub:'Builds AI products · Trains and serves models · Computer vision systems',roles:[['E1','Applied AI / GenAI Engineer','LLM APIs, RAG pipelines, agents, AI-native features'],['E2','ML Engineer','Training pipelines, model optimization, model serving'],['E3','Computer Vision Engineer','Detection, segmentation, CV product features']],skills:['LLM APIs + RAG pipelines (E1)','PyTorch training internals (E2)','OpenCV + C++ deployment (E3)','Strong SWE fundamentals','Model serving — Triton, TorchServe, TensorRT'],source:['GitHub — LangChain / LlamaIndex contributors (E1)','GitHub — PyTorch C++/CUDA layer contributors (E2)','CVPR / ICCV / ECCV paper author lists (E3)']},
+    infrastructure:{color:'#f4c67c',name:'Infrastructure Track',sub:'ML platforms · LLM ops tooling · Hardware-level ML optimization',roles:[['I1','MLOps / ML Platform Eng','Feature stores, training orchestration, model registry'],['I2','LLMOps Engineer','Eval pipelines, prompt versioning, fine-tune orchestration'],['I3','AI Infra / Compiler Eng','CUDA kernels, Triton, TVM/XLA — hardware-level']],skills:['Kubernetes + Terraform (I1)','LLM evaluation frameworks (I2)','CUDA / Triton kernel writing (I3)','Feature stores — Feast, Tecton, Hopsworks','MLflow / Kubeflow / Metaflow / Airflow'],source:['mlops.community Slack (I1)','LangSmith / LangChain Discord community (I2)','GPU Mode Discord + NVIDIA, AMD, Google XLA alumni (I3)']},
+    analytics:{color:'#7ec8d4',name:'Analytics Track',sub:'Derives insight from data · Runs experiments · Builds the semantic data layer',roles:[['A1','Data Scientist','Analysis, forecasting, A/B readouts, stakeholder decisions'],['A2','Analytics Engineer','dbt models, data marts, semantic layer, data quality']],skills:['Advanced SQL — window functions, CTEs','A/B testing + statistical inference (A1)','dbt — core competency required (A2)','Data visualization — Tableau, Looker, matplotlib','Causal inference methods'],source:['LinkedIn + MS Statistics / Econometrics graduates (A1)','dbt Community Slack — #jobs is highest yield (A2)','Locally Optimistic Slack community']},
+  };
+  const OVERLAP={
+    'applied+research':{title:'Research ∩ Applied Science',desc:'Applied ML Scientists at research labs and Research Scientists who care about product impact overlap here. Key screen: "Do you publish?" — if yes AND they ship to production, they span both tracks. Research Engineers (R2) are the prototypical bridge role.'},
+    'applied+engineering':{title:'Applied Science ∩ Engineering',desc:'ML Engineers who deeply understand modeling; Applied ML Scientists who write production-grade infrastructure. The separator: who defines WHAT to train (Applied Science) vs. HOW to run it reliably at scale (Engineering)?'},
+    'engineering+infrastructure':{title:'Engineering ∩ Infrastructure',desc:'Model serving, deployment, and optimization. ML Engineers care about latency for their specific models; MLOps Engineers build the shared platform everyone uses. LLMOps (I2) and GenAI Engineers (E1) overlap heavily here.'},
+    'analytics+applied':{title:'Applied Science ∩ Analytics',desc:'Both tracks run experiments and build predictive models. The separator: is the final output a deployed model running autonomously (Applied Science) or an insight delivered to a human decision-maker (Analytics)?'},
+    'analytics+infrastructure':{title:'Analytics ∩ Infrastructure',desc:'Data transformation for different consumers. Analytics Engineers (A2) build dbt models for analysts. MLOps Engineers (I1) build feature stores for production models. Ask who the downstream consumer of their work is.'},
+    'analytics+research':{title:'Research ∩ Analytics',desc:'Mathematical and statistical foundations. Both tracks require strong probability, statistics, and linear algebra. Data Scientists with PhDs doing heavy causal inference often sit at this intersection.'},
+    'analytics+engineering':{title:'Engineering ∩ Analytics',desc:'Data Scientists who write production code; GenAI Engineers building data intelligence products. Most common at smaller companies where roles are less differentiated.'},
+    'engineering+research':{title:'Research ∩ Engineering',desc:'Research implementation at the systems level — primarily the Research Engineer (R2) role. Strong SWE + ability to implement papers + comfort with high-ambiguity research environments.'},
+  };
+  function svgPt(e){const r=svg.getBoundingClientRect(),v=svg.viewBox.baseVal;return{x:(e.clientX-r.left)*v.width/r.width,y:(e.clientY-r.top)*v.height/r.height};}
+  function hit(x,y){return CIRCLES.filter(c=>Math.hypot(x-c.cx,y-c.cy)<=c.r).map(c=>c.id);}
+  function chip(code,col){return`<span style="font-size:10px;font-weight:600;color:${col};background:${col}22;padding:1px 6px;border-radius:3px;flex-shrink:0">${code}</span>`;}
+  function setVis(ids){CIRCLES.forEach(c=>{const el=document.getElementById('c-'+c.id),lb=document.getElementById('l-'+c.id);if(!el)return;if(ids.length===0){el.style.fillOpacity='0.12';el.style.strokeOpacity='1';el.style.strokeWidth='1.5';if(lb)lb.style.opacity='1';}else if(ids.includes(c.id)){el.style.fillOpacity='0.26';el.style.strokeOpacity='1';el.style.strokeWidth='2.5';if(lb)lb.style.opacity='1';}else{el.style.fillOpacity='0.03';el.style.strokeOpacity='0.2';el.style.strokeWidth='1.5';if(lb)lb.style.opacity='0.15';}});const h=document.getElementById('overlap-hints');if(h)h.style.opacity=ids.length?'0.12':'0.42';}
+  function render(ids){
+    if(ids.length===0){panel.innerHTML=`<div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center;justify-content:center;padding:6px 0 2px"><span style="font-size:12px;color:#b8a9f5;font-weight:500">● Research</span><span style="font-size:12px;color:#7ed4b0;font-weight:500">● Applied Science</span><span style="font-size:12px;color:#f4a87c;font-weight:500">● Engineering</span><span style="font-size:12px;color:#f4c67c;font-weight:500">● Infrastructure</span><span style="font-size:12px;color:#7ec8d4;font-weight:500">● Analytics</span></div><p style="font-size:11px;color:var(--subtle);text-align:center;margin-top:8px">Move cursor over any circle or overlap zone — panel updates with roles, skills &amp; sourcing</p>`;return;}
+    if(ids.length===1){const t=TRACK[ids[0]];panel.innerHTML=`<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)"><span style="width:9px;height:9px;border-radius:50%;background:${t.color};display:inline-block;flex-shrink:0"></span><span style="font-size:13px;font-weight:600;color:${t.color}">${t.name}</span><span style="font-size:11px;color:var(--muted)">${t.sub}</span></div><div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:20px"><div><div style="font-size:10px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Roles</div>${t.roles.map(([c,n,note])=>`<div style="margin-bottom:10px"><div style="display:flex;gap:7px;align-items:baseline">${chip(c,t.color)}<span style="font-size:12px;font-weight:500;color:var(--text)">${n}</span></div><div style="font-size:11px;color:var(--muted);margin-top:3px;padding-left:38px;line-height:1.45">${note}</div></div>`).join('')}</div><div><div style="font-size:10px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Key Skill Markers</div>${t.skills.map(s=>`<div style="font-size:12px;color:var(--text);padding:5px 0;border-bottom:1px solid var(--border);line-height:1.4">• ${s}</div>`).join('')}</div><div><div style="font-size:10px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Highest-Yield Sourcing</div>${t.source.map(s=>`<div style="font-size:12px;color:var(--text);padding:5px 0;border-bottom:1px solid var(--border);line-height:1.4">→ ${s}</div>`).join('')}</div></div>`;return;}
+    const key=[...ids].sort().join('+'),ol=OVERLAP[key]||{title:ids.join(' ∩ '),desc:'Candidates here combine skills from multiple tracks. Screen for which primary output matters most to your role.'};
+    panel.innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">${ids.map(id=>`<span style="width:8px;height:8px;border-radius:50%;background:${TRACK[id]?.color||'#fff'};display:inline-block"></span>`).join('<span style="font-size:12px;color:var(--muted);margin:0 1px">∩</span>')}<span style="font-size:13px;font-weight:600;color:var(--text);margin-left:4px">${ol.title}</span></div><p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:680px">${ol.desc}</p>`;
+  }
+  let last='';
+  svg.addEventListener('mousemove',e=>{const{x,y}=svgPt(e),ids=hit(x,y),k=[...ids].sort().join('+');if(k===last)return;last=k;setVis(ids);render(ids);});
+  svg.addEventListener('mouseleave',()=>{last='';setVis([]);render([]);});
+})();
+</script>
+</body>
+</html>
